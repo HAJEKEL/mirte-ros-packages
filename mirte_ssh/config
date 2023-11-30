@@ -1,0 +1,8 @@
+# General settings
+ForwardX11 yes
+
+# Specific host settings
+Host MIRTE
+    HostName robot_ip_adress
+    User mirte
+    IdentityFile ~/.ssh/your_private_key

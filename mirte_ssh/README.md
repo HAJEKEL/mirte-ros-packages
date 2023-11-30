@@ -74,3 +74,29 @@ To innitate the X11 forwarding run:
 ```bash
 ./mirte_ssh.sh
 ```
+
+## update_ssh_config_vscode.sh
+
+This shell script allows you to update the ~/.ssh/config file. This file will allow you to use the vscode extension Remote-SSH in order to edit the code on the remote, locally using vscode.
+
+Run the script to update the config file with the robot ip adress. Then go to the command palette in vscode, select Remote-SSH: connect to host.. Choose MIRTE.
+
+As you can see in the example config file:
+
+# General settings
+
+ForwardX11 yes
+
+# Specific host settings
+
+Host MIRTE
+HostName robot_ip_adress
+User mirte
+IdentityFile ~/.ssh/your_private_key
+
+We have added "ForwardX11 yes", such that X11 forwarding is enabled allowing you to view graphical applications that run on the mirte. The created host is called MIRTE, the robot_ip_adress can be altered depending on you network using the update_ssh_config_vscode.sh script. The user is mirte and the IdentityFile should be the location of your private key that has been linked to your mirte with:
+
+ssh-copy-id -i ~/.ssh/your_private_key mirte@robot_ip_address
+
+Now you can go to view, commandpallete, Remote-SSH: connect to host..
+and then select MIRTE. This will openup a new vscode window, that allows you to modify the files on mirte using vscode.
