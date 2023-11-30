@@ -67,6 +67,46 @@ sudo apt-get update
 sudo apt-get install xauth
 ```
 
+# SSH Connection for Graphical Forwarding (X11)
+
+To initiate X11 forwarding, run:
+./ssh_connection_X11.sh
+
+# Update SSH Configuration for Visual Studio Code
+
+The update_ssh_config_vscode.sh script updates the ~/.ssh/config file to enable the use of the Visual Studio Code
+(VSCode) Remote-SSH extension. This extension allows you to edit code on the remote machine directly from your local VSCode
+environment.
+
+## Steps to Use:
+
+1. Run update_ssh_config_vscode.sh to update the SSH config file with the current IP address of the robot.
+2. Open VSCode.
+3. Open the Command Palette (Ctrl+Shift+P or Cmd+Shift+P on Mac).
+4. Select “Remote-SSH: Connect to Host...”.
+5. Choose “MIRTE” from the list of available hosts.
+
+## Example SSH Config:
+
+In the file called "config" you will find an example config file that you can place in your ~/.ssh directory.
+
+It contains:
+
+- ForwardX11 yes: Enables X11 forwarding, allowing you to view graphical applications running on the robot.
+- Host MIRTE: Configures the connection details for the robot.
+  - HostName: The IP address of the robot (updated by update_ssh_config_vscode.sh).
+  - User mirte: Specifies the username for the SSH connection.
+  - IdentityFile: The path to your private SSH key.
+
+## Linking Your SSH Key:
+
+Ensure your SSH public key is linked to the robot for seamless authentication:
+ssh-copy-id -i ~/.ssh/your_private_key mirte@robot_ip_address
+
+Replace your_private_key and robot_ip_address with the appropriate file name and IP address.
+Once set up, you can connect to “MIRTE” via Remote-SSH in VSCode. This opens a new VSCode window, allowing you to edit files
+directly on the robot
+
 ## SSH connection for graphical forwarding
 
 To innitate the X11 forwarding run:
