@@ -24,7 +24,7 @@
     <!-- ROS control hardware interface for 4wheel mechanum 
          drive robot. -->
     <!--Load Control Configuration:-->
-     <rosparam command="load" file="$(find ridgeback_control)/config/control.yaml" />
+     <rosparam command="load" file="$(find mirte_control)/config/control.yaml" />
     <!--This node starts the necessary controllers.-->
      <node name="controller_spawner" pkg="controller_manager" type="spawner" args="ridgeback_joint_publisher ridgeback_velocity_controller" />
     <!--Manages velocity commands. Modify cmd_vel_out remap if needed.-->

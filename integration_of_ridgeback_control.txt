@@ -45,3 +45,11 @@ sudo systemctl start mirte-ros.service
 And you can enable it again with:
 
 sudo systemctl enable mirte-ros.service
+
+I have included the control.yaml from ridgeback_control in mirte_control.
+I have altered it to have the right wheel dimensions and velocity limits 
+from mirte_1. I have modified the launch file to include the new control.yaml
+and also to include the ridgback_control node, the remapping of the velocity for ridgeback
+and the ridgeback controller_spawner.
+
+Now I will try to rebuild and launch minimal.launch
