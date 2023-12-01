@@ -16,9 +16,26 @@
 
     <!-- ROS control hardware interface for differential
          drive robot. -->
+    <!-- Commented out because of ridgeback
     <node name="mirte_base_node" output="screen"
           pkg="mirte_control"
           type="mirte_control_node"/>
+    -->
+    <!-- ROS control hardware interface for 4wheel mechanum 
+         drive robot. -->
+    <!--Load Control Configuration:-->
+     <rosparam command="load" file="$(find ridgeback_control)/config/control.yaml" />
+    <!--This node starts the necessary controllers.-->
+     <node name="controller_spawner" pkg="controller_manager" type="spawner" args="ridgeback_joint_publisher ridgeback_velocity_controller" />
+    <!--Manages velocity commands. Modify cmd_vel_out remap if needed.-->
+     <node pkg="twist_mux" type="twist_mux" name="twist_mux">
+       <rosparam command="load" file="$(find ridgeback_control)/config/twist_mux.yaml" />
+       <remap from="cmd_vel_out" to="ridgeback_velocity_controller/cmd_vel"/>
+     </node>
+
+     <node name="ridgeback_base_controller" output="screen"
+           pkg="ridgeback_control" 
+           type="ridgeback_control_node"/>
 
     <!-- <node name="my_robot_camera"
           pkg="mirte_ros_package"
@@ -29,6 +46,7 @@
           type="navigation.py" output="screen"/> -->
 
     <!-- Load controller config -->
+    <!-- Commented out because of ridgeback
     <rosparam command="load" file="$(find mirte_control)/config/my_robot_common.yaml"/>
 
     <node name="controller_spawner"
@@ -36,7 +54,7 @@
           type="spawner"
           output="screen"
           args="mobile_base_controller"/>
-
+    -->
     <!-- Start the websocket server -->
     <include file="$(find rosbridge_server)/launch/rosbridge_websocket.launch">
       <arg name="websocket_external_port" value="80"/>

@@ -1,0 +1,3 @@
+[submodule "ridgeback"]
+	path = ridgeback
+	url = https://github.com/ridgeback/ridgeback.git

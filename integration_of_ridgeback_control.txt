@@ -1,0 +1,47 @@
+Integrated ridgeback as a submodule, used sparse-checkout to only
+clone the ridgeback_control package:
+
+Navigate to the 'ridgeback' directory:
+
+cd ~/henk_ws/src/mirte-ros-packages/ridgeback
+
+Initialize sparse-checkout:
+
+git sparse-checkout init
+
+Set the specific package for sparse-checkout:
+
+git sparse-checkout set ridgeback_control
+
+Pull the contents:
+
+git pull origin melodic-devel
+
+
+
+
+- Remove mirte_control node from minimal.launch
+- Remove mirte_control controller config "my_robot_common.yaml"
+- Remove mirte_control controller_spawner
+- Add ridgeback_control node to minimal.launch
+
+
+I have located the file that causes the robot computer to launch the 
+minimal.launch at startup:
+
+/etc/systemd/system/mirte-ros.service
+
+I have disabled it such that I can attempt 
+to run the updated ROS workspace with the updated minimal.launch
+
+sudo systemctl stop mirte-ros.service
+sudo systemctl disable mirte-ros.service
+
+
+You can still start it with:
+
+sudo systemctl start mirte-ros.service
+
+And you can enable it again with:
+
+sudo systemctl enable mirte-ros.service
