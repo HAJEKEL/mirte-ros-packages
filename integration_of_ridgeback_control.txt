@@ -53,3 +53,7 @@ and also to include the ridgback_control node, the remapping of the velocity for
 and the ridgeback controller_spawner.
 
 Now I will try to rebuild and launch minimal.launch
+
+Changed the .bashrc. Added a script at the end that makes sure my ssh
+key is used for pushing to github. tim van den akker keeps popping up otherwise. 
+
