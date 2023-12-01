@@ -57,3 +57,7 @@ Now I will try to rebuild and launch minimal.launch
 Changed the .bashrc. Added a script at the end that makes sure my ssh
 key is used for pushing to github. tim van den akker keeps popping up otherwise. 
 
+First launch failed because twist_mux wasnt installed. Installed it using:
+
+sudo apt-get install ros-noetic-twist-mux
+

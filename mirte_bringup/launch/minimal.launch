@@ -33,10 +33,6 @@
        <remap from="cmd_vel_out" to="ridgeback_velocity_controller/cmd_vel"/>
      </node>
 
-     <node name="ridgeback_base_controller" output="screen"
-           pkg="ridgeback_control" 
-           type="ridgeback_control_node"/>
-
     <!-- <node name="my_robot_camera"
           pkg="mirte_ros_package"
           type="camera.py" output="screen"/> -->
