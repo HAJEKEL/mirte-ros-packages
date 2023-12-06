@@ -10,8 +10,8 @@ HOST_NAME="MIRTE"
 echo "Before update:"
 cat $SSH_CONFIG
 
-# Get local network information (subnet)
-subnet=$(ifconfig | grep -oP 'broadcast \K(\d+\.\d+\.\d+)')
+# Get local network information (subnet) for the first interface starting with "wl"
+subnet=$(ip a show wlp0s20f3 | grep -oP 'inet \K(\d+\.\d+\.\d+)' | head -n 1)
 
 # Perform nmap scan
 nmap_result=$(nmap -sP ${subnet}.0/24)
